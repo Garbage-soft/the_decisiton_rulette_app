@@ -1,3 +1,7 @@
+body {
+  background-color: gainsboro;
+}
+
 .container {
   height: 900px;
   width: 900px;
@@ -85,4 +89,53 @@
   background-color: gray;
   position: absolute;
   z-index: 10;
+}
+
+/* ----- テキスト入力フォーム ----- */
+
+/* 右へ回り込みさせる方法は暫定 セグメントの追加・削除に応じてレイアウトの変更に対応させなければならない */
+
+.form-wrapper {
+  position: absolute;
+  top: 0;
+  /* left: 0; */
+  right: 0;
+  bottom: 0;
+  margin: 300px auto;
+  width: 250px;
+}
+
+.form-wrapper h2 {
+  font-weight: normal;
+  margin: 0;
+}
+
+.input-form {
+  height: 30px;
+  width: 100%;
+}
+
+.box {
+  height: 20px;
+  width: 20px;
+  margin: 3px 5px 0;
+  float: left;
+}
+
+/* 色分け 暫定 イケてる実装方法を考える */
+
+.r {
+  background-color: red;
+}
+
+.b {
+  background-color: blue;
+}
+
+.g {
+  background-color: green;
+}
+
+.y {
+  background-color: yellow;
 }

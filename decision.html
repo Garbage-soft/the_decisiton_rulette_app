@@ -10,18 +10,45 @@
   </head>
 
   <body>
-    <div class="container">
-      <div class="pin"></div> <!-- 結果を示すピン -->
-      <div class="foundation">
-        <!-- 土台になる部分 飾り用 動作しない -->
-        <div class="circle">
-          <!-- 円 ここをJSで回転させる -->
-          <div class="segment" id="segment_1"></div>
-          <div class="segment" id="segment_2"></div>
-          <div class="segment" id="segment_3"></div>
-          <div class="segment" id="segment_4"></div>
-          <div class="shaft"></div> <!-- 軸部分 飾り用 動作しない -->
+    <div class="wrapper">
+      <div class="container">
+        <div class="pin"></div> <!-- 結果を示すピン -->
+        <div class="foundation">
+          <!-- 土台になる部分 飾り用 動作しない -->
+          <div class="circle">
+            <!-- 円 ここをJSで回転させる -->
+            <div class="segment" id="segment_1"></div>
+            <div class="segment" id="segment_2"></div>
+            <div class="segment" id="segment_3"></div>
+            <div class="segment" id="segment_4"></div>
+            <div class="shaft"></div> <!-- 軸部分 飾り用 動作しない -->
+          </div>
         </div>
+      </div>
+      <div class="form-wrapper">
+        <h2>ルーレット設定</h2>
+        <form>
+          <div class="input-form">
+            <div class="box r"></div>
+            <input type="text">
+            <!-- <input type="submit" value="登録"> バックエンド実装後に使えるようにする -->
+          </div>
+          <div class="input-form">
+            <div class="box b"></div>
+            <input type="text">
+            <!-- <input type="submit" value="登録">  バックエンド実装後に使えるようにする -->
+          </div>
+          <div class="input-form">
+            <div class="box g"></div>
+            <input type="text">
+            <!-- <input type="submit" value="登録">  バックエンド実装後に使えるようにする -->
+          </div>
+          <div class="input-form">
+            <div class="box y"></div>
+            <input type="text">
+            <!-- <input type="submit" value="登録">  バックエンド実装後に使えるようにする -->
+          </div>
+        </form>
       </div>
     </div>
   </body>
