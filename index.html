@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>canvas sample</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<div class="container">
+    <div class="roulletWrapper">
+        <h2>ルーレットサンプル</h2>
+        <div id="canvas"></div>
+        <button type="button" id="reset" onclick="reset()">リセット</button>
+        <button type="button" id="start" onclick="start()">スタート！</button>
+        <button type="button" id="stop" onclick="stop()" style="display: none;">ストップ！</button>
+        <div class="history">
+            <h3>前回の結果:　</h3>
+            <h3 id="previous">なし</h3>
+        </div>
+    </div>
+    <div class="itemWrapper">
+        <h2>ルーレット設定</h2>
+        <div>
+            <h3>項目名と割合</h3>
+            <button type="button" class="add">1つ追加</button>
+            <input type="number" class="item-num" value="6" min="2" style="width: 50px;">
+            <button type="button" class="item-set" onclick="itemSet()">項目に設定</button>
+            <table id="table">
+                <tr><th>No.</th><th>色</th><th>項目名</th><th>割合</th><th>確率</th><th>削除</th></tr>
+                <tr class="item"><td class="number"></td><td><div class="color-indicator"></div></td><td><input type="text" class="name" value="項目A"></td><td><input type="number" class="ratio" value="1"></td><td class="probability"></td><td><button type="button" onclick="rmItem(this)">削除</button></td></tr>
+                <tr class="item"><td class="number"></td><td><div class="color-indicator"></div></td><td><input type="text" class="name" value="項目B"></td><td><input type="number" class="ratio" value="1"></td><td class="probability"></td><td><button type="button" onclick="rmItem(this)">削除</button></td></tr>
+                <tr class="item"><td class="number"></td><td><div class="color-indicator"></div></td><td><input type="text" class="name" value="項目C"></td><td><input type="number" class="ratio" value="1"></td><td class="probability"></td><td><button type="button" onclick="rmItem(this)">削除</button></td></tr>
+                <tr class="item"><td class="number"></td><td><div class="color-indicator"></div></td><td><input type="text" class="name" value="項目D"></td><td><input type="number" class="ratio" value="1"></td><td class="probability"></td><td><button type="button" onclick="rmItem(this)">削除</button></td></tr>
+                <tr class="item"><td class="number"></td><td><div class="color-indicator"></div></td><td><input type="text" class="name" value="項目E"></td><td><input type="number" class="ratio" value="1"></td><td class="probability"></td><td><button type="button" onclick="rmItem(this)">削除</button></td></tr>
+                <tr class="item"><td class="number"></td><td><div class="color-indicator"></div></td><td><input type="text" class="name" value="項目F"></td><td><input type="number" class="ratio" value="1"></td><td class="probability"></td><td><button type="button" onclick="rmItem(this)">削除</button></td></tr>
+            </table>
+            <button type="button" class="add">1つ追加</button>
+            <input type="number" class="item-num" value="6" min="2" style="width: 50px;">
+            <button type="button" class="item-set" onclick="itemSet()">項目に設定</button>
+        </div>
+    </div>
+</div>
+
+<!-- modal -->
+<div id="resultModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>結果は…</h2>
+        </div>
+        <div class="modal-body">
+            <p id="result"><!-- ここに結果を返す --></p>
+            <button type="button" calss="modal-close" onclick="modalClose()">確認して閉じる</button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="./js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="./js/p5.min.js"></script>
+<script type="text/javascript" src="./js/main.js"></script>
+</body>
+</html>
