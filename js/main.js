@@ -130,18 +130,35 @@ function draw() {
 // 入力フォームの検証
 function validation() {
     var badflag = false;
+    var errPartList = [];
+    var num = 1;
+    var arrayMsg = "No.";
+    // 項目名が空白
     $('.name').each(function(){
         if($(this).val()==""){
             badflag = true;
+            errMsg = "項目名"
+            errPartList.push(num);
         }
+        num++;
     });
+    // 割合が空白
+    num = 1;    // 初期化
     $('.ratio').each(function(){
         if((!$(this).val()>0)){
-            badflag = true;
+            if(badflag){
+                errMsg = "項目名と割合";
+                errPartList.push(num);
+            }else{
+                badflag = true;
+                errMsg = "割合";
+                errPartList.push(num);
+            }
         }
+        num++;
     });
     if(badflag){
-        alert('項目名と割合を正しく設定してください。');
+        alert(errMsg + 'を正しく設定してください。\n\n正しく設定されていない項目\n\n' + 'No.' + errPartList.join(', '));
         return 1;
     }
     return 0;
@@ -201,16 +218,69 @@ function cssColorSet() {
 }
 
 function drawRoulette(){
-    var angleSum = 0.0;
-    var x,y;
-    var r = 230;
-    var angle;
     push();
+// ----- 円弧の描画 -----
+    var angleSum = 0.0;
+    var textAngleList = [];     // 盤面に文字を入れる角度を格納する
     colorMode(HSL, 255);
     for(var i=0;i<len;i++){
         fill(colorList[i],255-COLOR_ADJ*colorList[i],128);
         arc(0,0,RADIUS*2,RADIUS*2,angleSum,angleSum+2*PI*probabilityList[i]);
+        textAngleList.push(degrees(angleSum + angleSum+2*PI*probabilityList[i]) / 2);
         angleSum += probabilityList[i]*2*PI;
+    }
+// ----- 数字の描画 -----
+    var x, y;
+    var w, h;
+    var r = 180;
+    var textPlaseAdj = 5;   // テキスト配置の微調整
+    textAlign(CENTER);
+// -----  描画設定  -----
+    // 項目数に応じて、盤面内に描写するellipseのwidth, height、テキストのサイズを設定する
+    switch(true) {
+        // 項目数 15　までの設定
+        case len <= 15:
+            w = 40;
+            h = 40;
+            textSize(20);
+            break;
+        // 項目数 15以上、30　までの設定
+        case len >= 15 && len <= 30:
+            w = 30;
+            h = 30;
+            textSize(15);
+            break;
+        case len >= 30 && len <= 50:
+            w = 20;
+            h = 20;
+            r = 200;
+            textSize(10);
+            break;
+        case len >= 50 && len <= 70:
+            w = 15;
+            h = 15;
+            r = 220;
+            textSize(7.5);
+            textPlaseAdj = 2;
+            break;
+        case len >= 70 && len <= 100:
+            w = 10;
+            h = 10;
+            r = 240;
+            textSize(5);
+            textPlaseAdj = 2;
+            break;
+    }
+    // 数字描画処理
+    for(var i=0;i<len;i++){
+        if(!(probabilityList[i] == 0)) {
+            x = cos(radians(textAngleList[i])) * r;
+            y = sin(radians(textAngleList[i])) * r;
+            fill(255);
+            ellipse(x, y, w, h);
+            fill(0)
+            text(i + 1, x, y + textPlaseAdj);
+        }
     }
     pop();
 }
@@ -233,7 +303,7 @@ function recalculate(){
 
 // 項目の追加
 $('.add').click(function() {
-    var add = '<tr class="item"><td class="number"></td><td><div class="color-indicator"></div></td><td><input type="text" class="name" value="項目"></td><td><input type="number" class="ratio" value="1"></td><td class="probability"></td><td><button type="button" onclick="rmItem(this)">削除</button></td></tr>';
+    var add = '<tr class="item"><td class="number"></td><td><div class="color-indicator"></div></td><td class="item-name"><input type="text" class="name" value="項目"></td><td><input type="number" class="ratio" value="1" min="0"></td><td class="probability"></td><td><button type="button" onclick="rmItem(this)">削除</button></td></tr>';
     $('#table').append(add);
     recalculate();
     renumbering();
@@ -315,8 +385,7 @@ function itemSet() {
         if (num > len){
             var addItemNum = num - len;
             for(var i=0; i < addItemNum; i++){
-                console.log('s')
-                var add = '<tr class="item"><td class="number"></td><td><div class="color-indicator"></div></td><td><input type="text" class="name" value="項目"></td><td><input type="number" class="ratio" value="1"></td><td class="probability"></td><td><button type="button" onclick="rmItem(this)">削除</button></td></tr>';
+                var add = '<tr class="item"><td class="number"></td><td><div class="color-indicator"></div></td><td class="item-name"><input type="text" class="name" value="項目"></td><td><input type="number" class="ratio" value="1" min="0"></td><td class="probability"></td><td><button type="button" onclick="rmItem(this)">削除</button></td></tr>';
                 $('#table').append(add);
             }
         }else{      // len > num
@@ -337,6 +406,7 @@ function renumbering() {
     var i = 1;
     $(".item").each(function(){
         $(this).children(".number").first().html(i);
+        $(this).children(".item-name").children('.name').first().val("項目 " + i);
         i++;
     });
 }

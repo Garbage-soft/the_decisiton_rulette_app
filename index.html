@@ -23,19 +23,19 @@
         <div>
             <h3>項目名と割合</h3>
             <button type="button" class="add">1つ追加</button>
-            <input type="number" class="item-num" value="6" min="2" style="width: 50px;">
+            <input type="number" class="item-num" value="6" min="2" max="100" style="width: 50px;">
             <button type="button" class="item-set" onclick="itemSet()">項目に設定</button>
             <table id="table">
                 <tr><th>No.</th><th>色</th><th>項目名</th><th>割合</th><th>確率</th><th>削除</th></tr>
-                <tr class="item"><td class="number"></td><td><div class="color-indicator"></div></td><td><input type="text" class="name" value="項目A"></td><td><input type="number" class="ratio" value="1"></td><td class="probability"></td><td><button type="button" onclick="rmItem(this)">削除</button></td></tr>
-                <tr class="item"><td class="number"></td><td><div class="color-indicator"></div></td><td><input type="text" class="name" value="項目B"></td><td><input type="number" class="ratio" value="1"></td><td class="probability"></td><td><button type="button" onclick="rmItem(this)">削除</button></td></tr>
-                <tr class="item"><td class="number"></td><td><div class="color-indicator"></div></td><td><input type="text" class="name" value="項目C"></td><td><input type="number" class="ratio" value="1"></td><td class="probability"></td><td><button type="button" onclick="rmItem(this)">削除</button></td></tr>
-                <tr class="item"><td class="number"></td><td><div class="color-indicator"></div></td><td><input type="text" class="name" value="項目D"></td><td><input type="number" class="ratio" value="1"></td><td class="probability"></td><td><button type="button" onclick="rmItem(this)">削除</button></td></tr>
-                <tr class="item"><td class="number"></td><td><div class="color-indicator"></div></td><td><input type="text" class="name" value="項目E"></td><td><input type="number" class="ratio" value="1"></td><td class="probability"></td><td><button type="button" onclick="rmItem(this)">削除</button></td></tr>
-                <tr class="item"><td class="number"></td><td><div class="color-indicator"></div></td><td><input type="text" class="name" value="項目F"></td><td><input type="number" class="ratio" value="1"></td><td class="probability"></td><td><button type="button" onclick="rmItem(this)">削除</button></td></tr>
+                <tr class="item"><td class="number"></td><td><div class="color-indicator"></div></td><td class="item-name"><input type="text" class="name" value="項目"></td><td><input type="number" class="ratio" value="1" min="0"></td><td class="probability"></td><td><button type="button" onclick="rmItem(this)">削除</button></td></tr>
+                <tr class="item"><td class="number"></td><td><div class="color-indicator"></div></td><td class="item-name"><input type="text" class="name" value="項目"></td><td><input type="number" class="ratio" value="1" min="0"></td><td class="probability"></td><td><button type="button" onclick="rmItem(this)">削除</button></td></tr>
+                <tr class="item"><td class="number"></td><td><div class="color-indicator"></div></td><td class="item-name"><input type="text" class="name" value="項目"></td><td><input type="number" class="ratio" value="1" min="0"></td><td class="probability"></td><td><button type="button" onclick="rmItem(this)">削除</button></td></tr>
+                <tr class="item"><td class="number"></td><td><div class="color-indicator"></div></td><td class="item-name"><input type="text" class="name" value="項目"></td><td><input type="number" class="ratio" value="1" min="0"></td><td class="probability"></td><td><button type="button" onclick="rmItem(this)">削除</button></td></tr>
+                <tr class="item"><td class="number"></td><td><div class="color-indicator"></div></td><td class="item-name"><input type="text" class="name" value="項目"></td><td><input type="number" class="ratio" value="1" min="0"></td><td class="probability"></td><td><button type="button" onclick="rmItem(this)">削除</button></td></tr>
+                <tr class="item"><td class="number"></td><td><div class="color-indicator"></div></td><td class="item-name"><input type="text" class="name" value="項目"></td><td><input type="number" class="ratio" value="1" min="0"></td><td class="probability"></td><td><button type="button" onclick="rmItem(this)">削除</button></td></tr>
             </table>
             <button type="button" class="add">1つ追加</button>
-            <input type="number" class="item-num" value="6" min="2" style="width: 50px;">
+            <input type="number" class="item-num" value="6" min="2" max="100" style="width: 50px;">
             <button type="button" class="item-set" onclick="itemSet()">項目に設定</button>
         </div>
     </div>
